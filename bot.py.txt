@@ -1,0 +1,25 @@
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+# BotFather’dan olgan tokenni shu yerga yozing
+TOKEN = "8487690379:AAE1DBfQnAs9TzUora43zdwL5npe2E8RYFQ"
+
+# /start komandasi ishlashi uchun funksiyasi
+def start(update: Update, context: CallbackContext):
+    update.message.reply_text("Salom! Bot ishlayapti ✅")
+
+# Main funksiyasi
+def main():
+    updater = Updater(TOKEN)
+    dp = updater.dispatcher
+
+    # /start komandasi
+    dp.add_handler(CommandHandler("start", start))
+
+    # Botni ishga tushirish
+    updater.start_polling()
+    updater.idle()
+
+# Fayl bevosita ishga tushirilsa main() ishlaydi
+if __name__ == "__main__":
+    main()
